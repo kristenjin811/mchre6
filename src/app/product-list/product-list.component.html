@@ -1,8 +1,20 @@
-<h2>Products</h2>
-
-
-<!-- 
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
--->
+<h2>Github Users</h2>
+<div>
+<input [(ngModel)]="searchText" placeholder="Enter GitHub username">
+<button (click)="searchClicked()">Search</button>
+</div>
+<div *ngIf="searchResults">
+<h2>Search Results</h2>
+<table>
+  <tr>
+    <th>User Id</th>
+    <th>Username</th>
+    <th>Profile URL Link</th>
+  </tr>
+  <tr *ngFor="let user of searchResults">
+    <td>{{ user.id }}</td>
+    <td>{{ user.login }}</td>
+    <td><a [href]="user.url" target="_blank">{{ user.url }}</a></td>
+  </tr>
+</table>
+</div>
